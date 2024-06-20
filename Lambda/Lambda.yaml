@@ -1,0 +1,24 @@
+- Example: Role
+  Ignore: true
+  Param:
+    Name: Lambda_Role
+  Result: Lambda_Role
+  Status: true
+- Example: Lambda
+  Param:
+    CodePath: .\Data\LambdaCode.py
+    Name: Pavel_Lambda
+    Role: Lambda_Role
+    TSRole: arn:aws:iam::047989593255:role/service-role/tomasz-api-hello-world-role-53pra235
+  Result: Pavel_Lambda
+  Status: true
+- Example: LambdaInvoke
+  Param:
+    Name: Pavel_Lambda
+    Parameter:
+      Var1: 1
+      Var2: 2
+  Result:
+    body: 'Check completed: ok, ok'
+    statusCode: 200
+  Status: true

@@ -1,0 +1,25 @@
+- Example: CloudFormation
+  Param:
+  - Pavel0
+  - TwoTier
+  - CidrPrefix: '10.0'
+  Result: null
+  Status: true
+  Update: false
+- Example: CloudFormation
+  Param:
+  - Pavel1
+  - TwoTier
+  - CidrPrefix: '11.0'
+  Result: null
+  Status: true
+  Update: false
+- Example: CF_VPCPeering
+  Param: Pavel
+  Result: pcx-0fd0fa3aaae0d8157
+  Status: true
+- Example: CF_VPCEndpoint
+  Param:
+    Stack: Pavel0
+  Result: vpce-0b275f392ee874395
+  Status: true

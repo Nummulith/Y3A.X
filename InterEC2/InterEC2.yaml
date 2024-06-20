@@ -1,0 +1,20 @@
+- Example: KeyPair
+  Param: Pavel
+  Result: key-08226901417bbf32b
+  Status: true
+- Example: CF_EC2
+  Param:
+    KeyPair: Pavel
+    PrivateIp: 10.0.1.8
+    Stack: Pavel0
+    Subnet: Private SN
+  Result: i-09de432575902281c
+  Status: true
+- Example: CF_EC2
+  Param:
+    KeyPair: Pavel
+    PrivateIp: 10.0.3.85
+    Stack: Pavel0
+    Subnet: Public SN
+  Result: i-06577386907207824
+  Status: true
