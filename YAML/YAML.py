@@ -9,25 +9,14 @@ def example(aws, module_name, function_name = None, param = None, result = None)
 
     if function_name == None:
         function_name = module_name
+    module_path = f"../Y3A.X/{module_name}/{module_name}.py"
 
     try:
-        module = importlib.import_module(f"Examples." + module_name + "." + module_name)
-        importlib.reload(module)
-
-        if not hasattr(module, function_name):
-            return None
-
+        spec = importlib.util.spec_from_file_location('module_name', module_path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
         func = getattr(module, function_name)
-
-        params = {
-            "aws" : aws,
-            "param" : param,
-        }
-        if function_name != module_name:
-            params["result"] = result
-        res = func(**params)
-
-        return res
+        func(aws, param, result)
                 
     except Exception as e:
         print(f"Example: An exception occurred: {type(e).__name__} - {e}")
@@ -59,7 +48,7 @@ def write_yaml_tuples(file_path, tuples_list):
 def doYAML(aws, filename, param, result = None):
     print(f"{{ YAML ({filename}) [{param if param != None else 'run'}] ---")
 
-    file_path = f'./Data/{filename}.yaml'
+    file_path = f'../Y3A.X/{filename}/{filename}.yaml'
     ex_list = read_yaml_tuples(file_path)
 
     to_iterate = ex_list if param != "clean" else reversed(ex_list)
